@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Exercises Master - 计算达人</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .store-button:hover {
+            transform: scale(1.05);
+        }
+        .screenshot-card:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <img src="assets/logo.png" alt="Logo" class="h-10 w-10">
+                    <span class="text-2xl font-bold text-gray-800" data-lang-key="app_name">计算达人</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-indigo-600 font-medium" data-lang-key="nav_features">功能</a>
+                    <a href="#users" class="text-gray-600 hover:text-indigo-600 font-medium" data-lang-key="nav_users">用户</a>
+                    <a href="#download" class="text-gray-600 hover:text-indigo-600 font-medium" data-lang-key="nav_download">下载</a>
+                    <a href="#faq" class="text-gray-600 hover:text-indigo-600 font-medium" data-lang-key="nav_faq">常见问题</a>
+                    <div class="flex items-center space-x-2">
+                        <button id="lang-zh" class="text-gray-600 hover:text-indigo-600 font-medium">中文</button>
+                        <span class="text-gray-400">|</span>
+                        <button id="lang-en" class="text-gray-400 hover:text-indigo-600 font-medium">English</button>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                        <i class="fa fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg pt-32 pb-20 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6" data-lang-key="hero_title">Mathematics Exercises Master</h1>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90" data-lang-key="hero_subtitle">专为1-6年级学生设计的智能数学练习题生成工具</p>
+                    <p class="text-lg mb-10 opacity-80" data-lang-key="hero_description">支持多种运算类型，可自定义题目数量和格式，轻松打印练习</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#download" class="bg-white text-indigo-600 font-semibold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+                            <i class="fa fa-download mr-2"></i><span data-lang-key="hero_download">立即下载</span>
+                        </a>
+                        <a href="#features" class="bg-transparent border-2 border-white text-white font-semibold py-3 px-6 rounded-full hover:bg-white hover:text-indigo-600 transition-all duration-300">
+                            <span data-lang-key="hero_learn_more">了解更多</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- <div class="md:w-1/2">
+                    <div class="relative">
+                        <img src="?prompt=mathematics%20education%20app%20interface%20showing%20math%20exercises%20with%20clean%20modern%20design&image_size=landscape_16_9" alt="App Interface" class="rounded-xl shadow-2xl w-full">
+                        <div class="absolute -bottom-6 -left-6 bg-white text-indigo-600 p-4 rounded-lg shadow-lg">
+                            <div class="flex items-center">
+                                <i class="fa fa-star text-yellow-400 mr-1"></i>
+                                <i class="fa fa-star text-yellow-400 mr-1"></i>
+                                <i class="fa fa-star text-yellow-400 mr-1"></i>
+                                <i class="fa fa-star text-yellow-400 mr-1"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <span class="ml-2 font-semibold">4.9/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-lang-key="features_title">强大功能</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-lang-key="features_subtitle">为家长、老师和学生提供全方位的数学练习解决方案</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-lang-key="feature_1_title">分级练习</h3>
+                    <p class="text-gray-600" data-lang-key="feature_1_desc">按1-6年级难度级别分类，循序渐进，适合不同学习阶段的学生</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-calculator text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-lang-key="feature_2_title">多种运算</h3>
+                    <p class="text-gray-600" data-lang-key="feature_2_desc">支持整数、小数、分数、百分数、混合运算、方程等多种数学运算类型</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-sliders text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-lang-key="feature_3_title">自定义格式</h3>
+                    <p class="text-gray-600" data-lang-key="feature_3_desc">可调整每页题目数量和列数，根据需要生成适合的练习格式</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-print text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-lang-key="feature_4_title">一键打印</h3>
+                    <p class="text-gray-600" data-lang-key="feature_4_desc">生成标准格式，方便直接打印使用，节省时间和精力</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-heart text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-lang-key="feature_5_title">收藏功能</h3>
+                    <p class="text-gray-600" data-lang-key="feature_5_desc">收藏常用练习类型，快速访问，提高使用效率</p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-globe text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-lang-key="feature_6_title">多语言支持</h3>
+                    <p class="text-gray-600" data-lang-key="feature_6_desc">支持简体中文、繁体中文和英文，满足不同语言用户的需求</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Users Section -->
+    <section id="users" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-lang-key="users_title">适用人群</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-lang-key="users_subtitle">为不同用户提供专业的数学练习解决方案</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- User 1 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+                    <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fa fa-child text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center" data-lang-key="user_1_title">小学生</h3>
+                    <p class="text-gray-600 text-center" data-lang-key="user_1_desc">1-6年级学生，通过练习提高数学成绩</p>
+                </div>
+                <!-- User 2 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+                    <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fa fa-users text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center" data-lang-key="user_2_title">家长</h3>
+                    <p class="text-gray-600 text-center" data-lang-key="user_2_desc">辅导孩子学习，为孩子生成适合的练习</p>
+                </div>
+                <!-- User 3 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+                    <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fa fa-book text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center" data-lang-key="user_3_title">教师</h3>
+                    <p class="text-gray-600 text-center" data-lang-key="user_3_desc">数学教师备课使用，快速生成课堂练习</p>
+                </div>
+                <!-- User 4 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+                    <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fa fa-building text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center" data-lang-key="user_4_title">教育机构</h3>
+                    <p class="text-gray-600 text-center" data-lang-key="user_4_desc">教育培训机构，为学员提供练习材料</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 bg-indigo-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-lang-key="download_title">立即下载</h2>
+                <p class="text-xl max-w-3xl mx-auto" data-lang-key="download_subtitle">在您的设备上体验强大的数学练习生成功能</p>
+            </div>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                <!-- Microsoft Store -->
+                <a href="#" class="store-button bg-white text-gray-800 rounded-xl p-6 shadow-lg transition-all duration-300 flex flex-col items-center">
+                    <i class="fa fa-windows text-4xl mb-4 text-blue-600"></i>
+                    <span class="font-semibold text-lg">Microsoft Store</span>
+                </a>
+                <!-- iOS App Store -->
+                <a href="#" class="store-button bg-white text-gray-800 rounded-xl p-6 shadow-lg transition-all duration-300 flex flex-col items-center">
+                    <i class="fa fa-apple text-4xl mb-4"></i>
+                    <span class="font-semibold text-lg">App Store</span>
+                </a>
+                <!-- Mac App Store -->
+                <a href="#" class="store-button bg-white text-gray-800 rounded-xl p-6 shadow-lg transition-all duration-300 flex flex-col items-center">
+                    <i class="fa fa-apple text-4xl mb-4"></i>
+                    <span class="font-semibold text-lg">Mac App Store</span>
+                </a>
+            </div>
+            <!-- <div class="text-center mt-12">
+                <p class="text-lg opacity-90">支持 Windows、iOS 和 macOS 平台</p>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-lang-key="faq_title">常见问题</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-lang-key="faq_subtitle">解答您可能有的疑问</p>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-6">
+                    <button class="w-full bg-white p-6 rounded-xl shadow-md flex justify-between items-center focus:outline-none">
+                        <span class="text-lg font-semibold text-gray-800" data-lang-key="faq_1_question">应用支持哪些数学运算类型？</span>
+                        <i class="fa fa-chevron-down text-gray-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="bg-white mt-2 p-6 rounded-xl shadow-md">
+                        <p class="text-gray-600" data-lang-key="faq_1_answer">应用支持多种数学运算类型，包括整数的加减乘除、小数运算、分数运算、百分数运算、混合运算、方程等，覆盖了小学1-6年级的全部数学运算内容。</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="mb-6">
+                    <button class="w-full bg-white p-6 rounded-xl shadow-md flex justify-between items-center focus:outline-none">
+                        <span class="text-lg font-semibold text-gray-800" data-lang-key="faq_2_question">如何自定义练习题的格式？</span>
+                        <i class="fa fa-chevron-down text-gray-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="bg-white mt-2 p-6 rounded-xl shadow-md">
+                        <p class="text-gray-600" data-lang-key="faq_2_answer">您可以调整每页的题目数量和列数，根据需要生成适合的练习格式。应用会自动调整排版，确保打印出来的练习题美观整洁。</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="mb-6">
+                    <button class="w-full bg-white p-6 rounded-xl shadow-md flex justify-between items-center focus:outline-none">
+                        <span class="text-lg font-semibold text-gray-800" data-lang-key="faq_3_question">应用支持哪些语言？</span>
+                        <i class="fa fa-chevron-down text-gray-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="bg-white mt-2 p-6 rounded-xl shadow-md">
+                        <p class="text-gray-600" data-lang-key="faq_3_answer">应用支持简体中文、繁体中文和英文三种语言，您可以根据需要在设置中切换语言。</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="mb-6">
+                    <button class="w-full bg-white p-6 rounded-xl shadow-md flex justify-between items-center focus:outline-none">
+                        <span class="text-lg font-semibold text-gray-800" data-lang-key="faq_4_question">如何打印生成的练习题？</span>
+                        <i class="fa fa-chevron-down text-gray-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="bg-white mt-2 p-6 rounded-xl shadow-md">
+                        <p class="text-gray-600" data-lang-key="faq_4_answer">生成练习题后，点击"打印"按钮，应用会生成标准格式的练习页面，您可以直接连接打印机进行打印，或者保存为PDF文件稍后打印。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Column 1 -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                    <img src="assets/logo.png" alt="Logo" class="h-10 w-10">
+                    <span class="text-2xl font-bold" data-lang-key="footer_logo">计算达人</span>
+                </div>
+                <p class="text-gray-400 mb-6" data-lang-key="footer_desc">为小学生提供智能数学练习解决方案</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-700 hover:bg-indigo-600 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-indigo-600 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-indigo-600 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6" data-lang-key="footer_links_title">快速链接</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-all duration-300" data-lang-key="footer_link_features">功能</a></li>
+                        <li><a href="#screenshots" class="text-gray-400 hover:text-white transition-all duration-300" data-lang-key="footer_link_screenshots">截图</a></li>
+                        <li><a href="#users" class="text-gray-400 hover:text-white transition-all duration-300" data-lang-key="footer_link_users">用户</a></li>
+                        <li><a href="#download" class="text-gray-400 hover:text-white transition-all duration-300" data-lang-key="footer_link_download">下载</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition-all duration-300" data-lang-key="footer_link_faq">常见问题</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6" data-lang-key="footer_contact_title">联系我们</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">xiazhongda@foxmail.com</span>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2026 Mathematics Exercises Master. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language data
+        const langData = {
+            zh: {
+                app_name: "计算达人",
+                nav_features: "功能",
+                nav_users: "用户",
+                nav_download: "下载",
+                nav_faq: "常见问题",
+                hero_title: "Mathematics Exercises Master",
+                hero_subtitle: "专为1-6年级学生设计的智能数学练习题生成工具",
+                hero_description: "支持多种运算类型，可自定义题目数量和格式，轻松打印练习",
+                hero_download: "立即下载",
+                hero_learn_more: "了解更多",
+                features_title: "强大功能",
+                features_subtitle: "为家长、老师和学生提供全方位的数学练习解决方案",
+                feature_1_title: "分级练习",
+                feature_1_desc: "按1-6年级难度级别分类，循序渐进，适合不同学习阶段的学生",
+                feature_2_title: "多种运算",
+                feature_2_desc: "支持整数、小数、分数、百分数、混合运算、方程等多种数学运算类型",
+                feature_3_title: "自定义格式",
+                feature_3_desc: "可调整每页题目数量和列数，根据需要生成适合的练习格式",
+                feature_4_title: "一键打印",
+                feature_4_desc: "生成标准格式，方便直接打印使用，节省时间和精力",
+                feature_5_title: "收藏功能",
+                feature_5_desc: "收藏常用练习类型，快速访问，提高使用效率",
+                feature_6_title: "多语言支持",
+                feature_6_desc: "支持简体中文、繁体中文和英文，满足不同语言用户的需求",
+                users_title: "适用人群",
+                users_subtitle: "为不同用户提供专业的数学练习解决方案",
+                user_1_title: "小学生",
+                user_1_desc: "1-6年级学生，通过练习提高数学成绩",
+                user_2_title: "家长",
+                user_2_desc: "辅导孩子学习，为孩子生成适合的练习",
+                user_3_title: "教师",
+                user_3_desc: "数学教师备课使用，快速生成课堂练习",
+                user_4_title: "教育机构",
+                user_4_desc: "教育培训机构，为学员提供练习材料",
+                download_title: "立即下载",
+                download_subtitle: "在您的设备上体验强大的数学练习生成功能",
+                faq_title: "常见问题",
+                faq_subtitle: "解答您可能有的疑问",
+                faq_1_question: "应用支持哪些数学运算类型？",
+                faq_1_answer: "应用支持多种数学运算类型，包括整数的加减乘除、小数运算、分数运算、百分数运算、混合运算、方程等，覆盖了小学1-6年级的全部数学运算内容。",
+                faq_2_question: "如何自定义练习题的格式？",
+                faq_2_answer: "您可以调整每页的题目数量和列数，根据需要生成适合的练习格式。应用会自动调整排版，确保打印出来的练习题美观整洁。",
+                faq_3_question: "应用支持哪些语言？",
+                faq_3_answer: "应用支持简体中文、繁体中文和英文三种语言，您可以根据需要在设置中切换语言。",
+                faq_4_question: "如何打印生成的练习题？",
+                faq_4_answer: "生成练习题后，点击\"打印\"按钮，应用会生成标准格式的练习页面，您可以直接连接打印机进行打印，或者保存为PDF文件稍后打印。",
+                footer_logo: "计算达人",
+                footer_desc: "为小学生提供智能数学练习解决方案",
+                footer_links_title: "快速链接",
+                footer_link_features: "功能",
+                footer_link_screenshots: "截图",
+                footer_link_users: "用户",
+                footer_link_download: "下载",
+                footer_link_faq: "常见问题",
+                footer_contact_title: "联系我们",
+            },
+            en: {
+                app_name: "Math Master",
+                nav_features: "Features",
+                nav_users: "Users",
+                nav_download: "Download",
+                nav_faq: "FAQ",
+                hero_title: "Mathematics Exercises Master",
+                hero_subtitle: "Intelligent math exercise generator designed for students in grades 1-6",
+                hero_description: "Supports multiple operation types, customizable question quantity and format, easy to print exercises",
+                hero_download: "Download Now",
+                hero_learn_more: "Learn More",
+                features_title: "Powerful Features",
+                features_subtitle: "Comprehensive math practice solutions for parents, teachers and students",
+                feature_1_title: "Leveled Practice",
+                feature_1_desc: "Categorized by grades 1-6 difficulty levels, progressive, suitable for students at different learning stages",
+                feature_2_title: "Multiple Operations",
+                feature_2_desc: "Supports integer, decimal, fraction, percentage, mixed operations, equations, covering all math operations for elementary school grades 1-6",
+                feature_3_title: "Customizable Format",
+                feature_3_desc: "Adjust the number of questions and columns per page to generate suitable practice formats as needed",
+                feature_4_title: "One-click Print",
+                feature_4_desc: "Generate standard format, convenient for direct printing, saving time and effort",
+                feature_5_title: "Favorite Feature",
+                feature_5_desc: "Save frequently used practice types for quick access and improved efficiency",
+                feature_6_title: "Multi-language Support",
+                feature_6_desc: "Supports Simplified Chinese, Traditional Chinese and English, meeting the needs of users in different languages",
+                users_title: "Target Users",
+                users_subtitle: "Professional math practice solutions for different users",
+                user_1_title: "Elementary Students",
+                user_1_desc: "Students in grades 1-6, improve math performance through practice",
+                user_2_title: "Parents",
+                user_2_desc: "Help children learn, generate suitable exercises for children",
+                user_3_title: "Teachers",
+                user_3_desc: "Math teachers use for lesson preparation, quickly generate classroom exercises",
+                user_4_title: "Educational Institutions",
+                user_4_desc: "Educational training institutions, provide practice materials for students",
+                download_title: "Download Now",
+                download_subtitle: "Experience powerful math practice generation features on your device",
+                faq_title: "Frequently Asked Questions",
+                faq_subtitle: "Answers to your possible questions",
+                faq_1_question: "What math operation types does the app support?",
+                faq_1_answer: "The app supports multiple math operation types, including integer addition, subtraction, multiplication, division, decimal operations, fraction operations, percentage operations, mixed operations, equations, covering all math operation content for elementary school grades 1-6.",
+                faq_2_question: "How to customize the format of practice questions?",
+                faq_2_answer: "You can adjust the number of questions and columns per page to generate suitable practice formats as needed. The app will automatically adjust the typesetting to ensure that the printed practice questions are beautiful and neat.",
+                faq_3_question: "What languages does the app support?",
+                faq_3_answer: "The app supports three languages: Simplified Chinese, Traditional Chinese and English. You can switch languages in the settings as needed.",
+                faq_4_question: "How to print the generated practice questions?",
+                faq_4_answer: "After generating practice questions, click the \"Print\" button, the app will generate standard format practice pages, you can directly connect to the printer for printing, or save as PDF files for later printing.",
+                footer_logo: "Math Master",
+                footer_desc: "Intelligent math practice solutions for elementary school students",
+                footer_links_title: "Quick Links",
+                footer_link_features: "Features",
+                footer_link_screenshots: "Screenshots",
+                footer_link_users: "Users",
+                footer_link_download: "Download",
+                footer_link_faq: "FAQ",
+                footer_contact_title: "Contact Us",
+                footer_address: "Haidian District, Beijing"
+            }
+        };
+
+        // Function to change language
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (langData[lang][key]) {
+                    element.textContent = langData[lang][key];
+                }
+            });
+
+            // Update language button styles
+            document.getElementById('lang-zh').className = lang === 'zh' ? 'text-gray-600 hover:text-indigo-600 font-medium' : 'text-gray-400 hover:text-indigo-600 font-medium';
+            document.getElementById('lang-en').className = lang === 'en' ? 'text-gray-600 hover:text-indigo-600 font-medium' : 'text-gray-400 hover:text-indigo-600 font-medium';
+
+            // Store current language in local storage
+            localStorage.setItem('math_master_lang', lang);
+        }
+
+        // Add event listeners for language buttons
+        document.getElementById('lang-zh').addEventListener('click', () => changeLanguage('zh'));
+        document.getElementById('lang-en').addEventListener('click', () => changeLanguage('en'));
+
+        // Initialize language based on local storage or default to Chinese
+        const savedLang = localStorage.getItem('math_master_lang') || 'zh';
+        changeLanguage(savedLang);
+
+        // Simple FAQ toggle functionality
+        document.querySelectorAll('#faq button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                if (content.style.display === 'none' || !content.style.display) {
+                    content.style.display = 'block';
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    content.style.display = 'none';
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // Close FAQ content by default
+        document.querySelectorAll('#faq .bg-white.mt-2').forEach(content => {
+            content.style.display = 'none';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
